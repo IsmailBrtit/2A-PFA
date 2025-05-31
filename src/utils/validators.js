@@ -1,4 +1,3 @@
-// src/utils/validators.js
 import * as yup from 'yup';
 
 export const partnerSchema = yup.object().shape({
@@ -6,5 +5,5 @@ export const partnerSchema = yup.object().shape({
   email: yup.string().email('Email invalide').required('Email est requis'),
   universityName: yup.string().required('Nom de l’université est requis'),
   country: yup.string().required('Pays est requis'),
-  gradingScale: yup.string().required('Échelle de notation est requise'),
+  gradingScale: yup.string(),  // Optionnel, pas obligatoire
 });

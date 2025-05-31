@@ -14,7 +14,7 @@ const mockStudentInfo = {
 const mockMobilities = [
   {
     id: 1,
-    program: "Échange Erasmus",
+    program: "Échange ",
     startDate: "2025-09-01",
     endDate: "2026-01-31",
     type: "EXCHANGE",

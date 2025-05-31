@@ -40,7 +40,7 @@ const StudentDashboard = ({ user }) => {
         </section>
 
         <section>
-  <h2 className="text-2xl font-semibold mb-5 border-b pb-2">Mes mobilités</h2>
+  <h2 className="text-2xl font-semibold mb-5 border-b pb-2">Ma mobilité</h2>
   {mobilities.length === 0 ? (
     <p className="text-gray-500 italic">Aucune mobilité trouvée.</p>
   ) : (
