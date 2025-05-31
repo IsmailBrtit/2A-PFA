@@ -18,7 +18,19 @@ let usersMock = [
     country: 'France',
     gradingScale: '20 points',
   },
+  {
+    id: 5, // IMPORTANT : correspond à user.id dans localStorage
+    fullName: 'Student Example',
+    email: 'student@ensias.ma',
+    role: 'STUDENT',
+    filiere: 'CS',
+    partner: {
+      universityName: 'Université de Paris',
+      country: 'France',
+    }
+  }
 ];
+
 
 const delay = (ms) => new Promise(res => setTimeout(res, ms));
 

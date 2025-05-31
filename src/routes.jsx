@@ -7,6 +7,7 @@ import MobilityDashboard from './pages/mobility/MobilityDashboard';
 import CoordinatorDashboard from './pages/coordinator/CoordinatorDashboard';
 import StudentDashboard from './pages/student/StudentDashboard';
 import PartnerDashboard from './pages/partner/PartnerDashboard';
+import ProfilePage from './pages/profile/ProfilePage';
 
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import AuthGuard from './components/auth/AuthGuard';
@@ -73,6 +74,17 @@ export default function AppRoutes({ user }) {
             </ProtectedRoute>
           }
         />
+
+        <Route
+         path="/profile"
+         element={
+          <ProtectedRoute user={user}>
+            <AuthGuard user={user} allowedRoles={[USER_ROLES.SYSTEM_ADMIN, USER_ROLES.SCHOOL_ADMIN, USER_ROLES.MOBILITY_OFFICER, USER_ROLES.COORDINATOR, USER_ROLES.STUDENT, USER_ROLES.PARTNER]}>
+              <ProfilePage user={user} />
+           </AuthGuard>
+          </ProtectedRoute>
+  }
+/>
 
         {/* Redirection fallback */}
         <Route path="*" element={<Navigate to="/auth/login" replace />} />

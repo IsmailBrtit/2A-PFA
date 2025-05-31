@@ -9,22 +9,24 @@ const Login = () => {
   const handleLogin = (credentials) => {
     // Mock authentification - remplacez par votre logique réelle
     const mockUsers = {
-      'admin@ensias.ma': { role: USER_ROLES.SYSTEM_ADMIN, name: 'System Admin' },
-      'school@ensias.ma': { role: USER_ROLES.SCHOOL_ADMIN, name: 'School Admin' },
-      'mobility@ensias.ma': { role: USER_ROLES.MOBILITY_OFFICER, name: 'Mobility Officer' },
-      'coord@ensias.ma': { role: USER_ROLES.COORDINATOR, name: 'Coordinator' },
-      'student@ensias.ma': { role: USER_ROLES.STUDENT, name: 'Student' },
-      'partner@university.com': { role: USER_ROLES.PARTNER, name: 'Partner' }
-    };
+  'admin@ensias.ma': { id: 1, role: USER_ROLES.SYSTEM_ADMIN, fullName: 'System Admin' },
+  'school@ensias.ma': { id: 2, role: USER_ROLES.SCHOOL_ADMIN, fullName: 'School Admin' },
+  'mobility@ensias.ma': { id: 3, role: USER_ROLES.MOBILITY_OFFICER, fullName: 'Mobility Officer' },
+  'coord@ensias.ma': { id: 4, role: USER_ROLES.COORDINATOR, fullName: 'Coordinator' },
+  'student@ensias.ma': { id: 5, role: USER_ROLES.STUDENT, fullName: 'Student Example' },
+  'partner@university.com': { id: 6, role: USER_ROLES.PARTNER, fullName: 'Partner Example' }
+};
+
 
     const user = mockUsers[credentials.email];
     
     if (user && credentials.password === 'password') {
       // Stocker les infos utilisateur (remplacez par votre système de gestion d'état)
       localStorage.setItem('user', JSON.stringify({
+        id: user.id,
         email: credentials.email,
         role: user.role,
-        name: user.name
+        fullName: user.fullName,
       }));
 
       // Rediriger selon le rôle
