@@ -6,7 +6,7 @@ import Card from '../../components/ui/Card';
 import Layout from '../../components/common/Layout';
 
 
-const Partners = () => {
+const Partners = ({ user }) => {
   const [partners, setPartners] = useState([]);
   const [loading, setLoading] = useState(true);
   const [editingPartner, setEditingPartner] = useState(null);
@@ -68,6 +68,7 @@ const Partners = () => {
   if (loading) return <div>Chargement...</div>;
 
   return (
+    <Layout user={user}>
     <div className="max-w-4xl mx-auto mt-10 px-4"   >
       <h1 className="text-2xl font-bold mb-4 text-center">Gestion des partenaires</h1>
 
@@ -129,6 +130,7 @@ const Partners = () => {
         </tbody>
       </table>
     </div>
+    </Layout>
   );
 };
 

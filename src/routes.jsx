@@ -8,6 +8,8 @@ import CoordinatorDashboard from './pages/coordinator/CoordinatorDashboard';
 import StudentDashboard from './pages/student/StudentDashboard';
 import PartnerDashboard from './pages/partner/PartnerDashboard';
 import ProfilePage from './pages/profile/ProfilePage';
+import Partners from './pages/admin/Partners';
+import Users from './pages/admin/Users';
 
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import AuthGuard from './components/auth/AuthGuard';
@@ -26,6 +28,28 @@ export default function AppRoutes({ user }) {
             <ProtectedRoute user={user}>
               <AuthGuard user={user} allowedRoles={[USER_ROLES.SYSTEM_ADMIN, USER_ROLES.SCHOOL_ADMIN]}>
                 <AdminDashboard user={user} />
+              </AuthGuard>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin-partners"
+          element={
+            <ProtectedRoute user={user}>
+              <AuthGuard user={user} allowedRoles={[USER_ROLES.SYSTEM_ADMIN, USER_ROLES.SCHOOL_ADMIN]}>
+                <Partners user={user} />
+              </AuthGuard>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin-users"
+          element={
+            <ProtectedRoute user={user}>
+              <AuthGuard user={user} allowedRoles={[USER_ROLES.SYSTEM_ADMIN, USER_ROLES.SCHOOL_ADMIN]}>
+                <Users user={user} />
               </AuthGuard>
             </ProtectedRoute>
           }
