@@ -3,7 +3,13 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 
 import Login from './pages/auth/Login';
 import AdminDashboard from './pages/admin/AdminDashboard';
+import Structure from './pages/admin/Structure';
 import MobilityDashboard from './pages/mobility/MobilityDashboard';
+import MobilityList from './pages/mobility/MobilityList'; 
+import CreateMobility from './pages/mobility/CreateMobility';
+import MobilityDocuments from './pages/mobility/MobilityDocuments';
+import MobilityStats from './pages/mobility/MobilityStats';
+import OcrReview from './pages/mobility/OcrReview'; // adapte le chemin si besoin
 import CoordinatorDashboard from './pages/coordinator/CoordinatorDashboard';
 import StudentDashboard from './pages/student/StudentDashboard';
 import PartnerDashboard from './pages/partner/PartnerDashboard';
@@ -13,6 +19,7 @@ import Users from './pages/admin/Users';
 
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import AuthGuard from './components/auth/AuthGuard';
+
 
 import { USER_ROLES } from './utils/constants';
 
@@ -98,6 +105,74 @@ export default function AppRoutes({ user }) {
             </ProtectedRoute>
           }
         />
+
+        <Route
+          path="/admin/structure"
+          element={
+            <ProtectedRoute user={user}>
+              <AuthGuard user={user} allowedRoles={[USER_ROLES.SYSTEM_ADMIN, USER_ROLES.SCHOOL_ADMIN]}>
+                <Structure user={user} />
+              </AuthGuard>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/mobility-create"
+          element={
+            <ProtectedRoute user={user}>
+              <AuthGuard user={user} allowedRoles={[USER_ROLES.MOBILITY_OFFICER]}>
+                <CreateMobility user={user} />
+              </AuthGuard>
+            </ProtectedRoute>
+          }
+        />
+
+
+      <Route
+        path="/mobility-list"
+        element={
+          <ProtectedRoute user={user}>
+            <AuthGuard user={user} allowedRoles={[USER_ROLES.MOBILITY_OFFICER]}>
+              <MobilityList user={user} />
+            </AuthGuard>
+          </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/mobility/:mobilityId/documents"
+          element={
+            <ProtectedRoute user={user}>
+              <AuthGuard user={user} allowedRoles={[USER_ROLES.MOBILITY_OFFICER]}>
+                <MobilityDocuments user={user} />
+              </AuthGuard>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/mobility-stats"
+          element={
+            <ProtectedRoute user={user}>
+              <AuthGuard user={user} allowedRoles={[USER_ROLES.MOBILITY_OFFICER]}>
+                <MobilityStats user={user} />
+              </AuthGuard>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/mobility/:mobilityId/documents/ocr-review"
+          element={
+            <ProtectedRoute user={user}>
+              <AuthGuard user={user} allowedRoles={[USER_ROLES.MOBILITY_OFFICER]}>
+                <OcrReview user={user} />
+              </AuthGuard>
+            </ProtectedRoute>
+          }
+        />
+
 
         <Route
          path="/profile"

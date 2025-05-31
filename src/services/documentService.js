@@ -1,4 +1,3 @@
-// src/services/documentService.js
 
 let documentsMock = [
   {

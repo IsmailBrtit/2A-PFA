@@ -8,13 +8,19 @@ const Sidebar = ({ role }) => {
       { to: '/admin-dashboard', label: 'Dashboard Admin' },
       { to: '/admin-users', label: 'Gestion Utilisateurs' },
       { to: '/admin-partners', label: 'Partenaires' },
+      { to: '/admin/structure', label: 'Structure Académique' },
     ],
     [USER_ROLES.SCHOOL_ADMIN]: [
       { to: '/admin-dashboard', label: 'Dashboard Admin' },
+      { to: '/admin/structure', label: 'Structure Académique' },
     ],
     [USER_ROLES.MOBILITY_OFFICER]: [
       { to: '/mobility-dashboard', label: 'Dashboard Mobilité' },
-      { to: '/mobility-list', label: 'Mobilités' },
+      { to: '/mobility-list', label: 'Liste Mobilités' },
+      { to: '/mobility-create', label: 'Créer Mobilité' },
+      { to: '/mobility-stats', label: 'Statistiques' },       // Nouveau lien vers stats
+      { to: '/mobility/:mobilityId/documents/ocr-review', label: 'Validation OCR', hideInSidebar: true },
+
     ],
     [USER_ROLES.COORDINATOR]: [
       { to: '/coordinator-dashboard', label: 'Dashboard Coordinateur' },

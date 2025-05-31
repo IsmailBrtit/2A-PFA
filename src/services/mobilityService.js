@@ -1,6 +1,5 @@
 import mockApi from './mockApi';
 
-// Mock data initiale (exemple simple)
 let mobilitiesMock = [
   {
     id: 1,
@@ -8,7 +7,7 @@ let mobilitiesMock = [
     startDate: '2024-09-01',
     endDate: '2025-06-30',
     type: 'EXCHANGE',
-    status: 'PENDING',
+    status: 'PENDING_DOCS',
     studentId: 1,
   },
   {
@@ -17,12 +16,11 @@ let mobilitiesMock = [
     startDate: '2024-07-01',
     endDate: '2024-09-01',
     type: 'INTERNSHIP',
-    status: 'APPROVED',
+    status: 'VALIDATED',
     studentId: 2,
   },
 ];
 
-// Simule délai
 const delay = (ms) => new Promise(res => setTimeout(res, ms));
 
 export const fetchMobilities = async () => {

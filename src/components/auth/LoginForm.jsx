@@ -49,9 +49,9 @@ const LoginForm = ({ onLogin }) => {
             <div className="text-blue-600 font-bold text-xl">E</div>
           </div>
           <h1 className="text-2xl font-bold text-gray-900 mb-2">
-            ENSIAS External Mobility
+            ENSIAS Mobilité externe
           </h1>
-          <p className="text-gray-600">Sign in to your account</p>
+          <p className="text-gray-600">Connectez-vous à votre compte</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -80,7 +80,7 @@ const LoginForm = ({ onLogin }) => {
           {/* Password */}
           <div>
             <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
-              Password
+              Mot de passe
             </label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -130,7 +130,7 @@ const LoginForm = ({ onLogin }) => {
               type="button"
               className="text-sm text-blue-600 hover:text-blue-800 font-medium"
             >
-              Forgot password?
+              Mot de passe oublié?
             </button>
           </div>
 
