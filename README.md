@@ -1,12 +1,31 @@
-# React + Vite
+# Frontend ENSIAS Mobility - Mode développement avec API Mock
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Présentation
 
-Currently, two official plugins are available:
+Ce projet frontend React est actuellement configuré pour fonctionner avec une **API mock** qui simule les appels backend.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Pourquoi utiliser une API mock ?
 
-## Expanding the ESLint configuration
+- Permet de développer et tester le frontend indépendamment du backend  
+- Évite les blocages liés à l’indisponibilité du backend  
+- Facilite les tests et le développement parallèle avec l’équipe backend
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Où se trouve l’API mock ?
+
+Le fichier `src/services/mockApi.js` contient une implémentation simulée des méthodes HTTP (`get`, `post`, `put`, `delete`)  
+Ces méthodes retournent des données factices après un délai simulé.
+
+## Services API
+
+Tous les services (ex : `partnerService.js`, `userService.js`) importent actuellement `mockApi.js` pour effectuer leurs opérations.
+
+## Passage à l’API réelle
+
+Pour brancher le backend, il suffit de modifier l’import dans chaque service :  
+
+```js
+// Remplacer ceci
+import api from './mockApi';
+
+// Par cela
+import api from './api';
