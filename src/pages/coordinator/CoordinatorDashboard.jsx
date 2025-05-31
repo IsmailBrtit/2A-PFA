@@ -1,13 +1,15 @@
 // Exemple minimal dans AdminDashboard.jsx
 import React from 'react';
+import Layout from '../../components/common/Layout';
 
-const CoordinatorDashboard = () => {
+
+const CoordinatorDashboard = ({ user }) => {
   return (
-    <div>
-      <h1>Coordinator Dashboard </h1>
+  <Layout user={user}>
+      <h1>Coordinator Dashboard (en cours de développement)</h1>
       {/* contenu */}
-    </div>
-  );
+    </Layout>
+);
 };
 
 export default CoordinatorDashboard;  // <- Export par défaut obligatoire !

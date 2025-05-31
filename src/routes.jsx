@@ -24,7 +24,7 @@ export default function AppRoutes({ user }) {
           element={
             <ProtectedRoute user={user}>
               <AuthGuard user={user} allowedRoles={[USER_ROLES.SYSTEM_ADMIN, USER_ROLES.SCHOOL_ADMIN]}>
-                <AdminDashboard />
+                <AdminDashboard user={user} />
               </AuthGuard>
             </ProtectedRoute>
           }
@@ -35,7 +35,7 @@ export default function AppRoutes({ user }) {
           element={
             <ProtectedRoute user={user}>
               <AuthGuard user={user} allowedRoles={[USER_ROLES.MOBILITY_OFFICER]}>
-                <MobilityDashboard />
+                <MobilityDashboard user={user} />
               </AuthGuard>
             </ProtectedRoute>
           }
@@ -46,7 +46,7 @@ export default function AppRoutes({ user }) {
           element={
             <ProtectedRoute user={user}>
               <AuthGuard user={user} allowedRoles={[USER_ROLES.COORDINATOR]}>
-                <CoordinatorDashboard />
+                <CoordinatorDashboard user={user} />
               </AuthGuard>
             </ProtectedRoute>
           }
@@ -57,7 +57,7 @@ export default function AppRoutes({ user }) {
           element={
             <ProtectedRoute user={user}>
               <AuthGuard user={user} allowedRoles={[USER_ROLES.STUDENT]}>
-                <StudentDashboard />
+                <StudentDashboard user={user} />
               </AuthGuard>
             </ProtectedRoute>
           }
@@ -68,13 +68,13 @@ export default function AppRoutes({ user }) {
           element={
             <ProtectedRoute user={user}>
               <AuthGuard user={user} allowedRoles={[USER_ROLES.PARTNER]}>
-                <PartnerDashboard />
+                <PartnerDashboard user={user} />
               </AuthGuard>
             </ProtectedRoute>
           }
         />
 
-        {/* Redirection par défaut */}
+        {/* Redirection fallback */}
         <Route path="*" element={<Navigate to="/auth/login" replace />} />
       </Routes>
     </Router>
