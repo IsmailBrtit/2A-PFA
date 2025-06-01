@@ -42,14 +42,16 @@ const LoginForm = ({ onLogin }) => {
       }}
     >
       {/* Overlay dégradé bleu semi-transparent */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-600 opacity-75"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-red-800 to-red-600 opacity-75"></div>
 
       {/* Formulaire */}
       <div className="relative w-full max-w-md mt-20 bg-white rounded-2xl shadow-2xl p-8 z-10">
         {/* Logo et titre */}
         <div className="text-center mb-8">
-          <div className="mx-auto w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-            <div className="text-blue-600 font-bold text-xl">E</div>
+          <div className="mx-auto w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mb-4">
+            {/* <div className="text-red-600 font-bold text-xl">E</div>*/}
+            <img src="/ensias-icon.png" alt="Logo ENSIAS" className="w-10 h-10" />
+
           </div>
           <h1 className="text-2xl font-bold text-gray-900 mb-2">
             ENSIAS Mobilité externe
@@ -74,7 +76,7 @@ const LoginForm = ({ onLogin }) => {
                 required
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors bg-blue-50"
+                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg  focus:ring-blue-500 focus:border-red-500 transition-colors bg-red-50"
                 placeholder="your@email.com"
               />
             </div>
@@ -96,7 +98,7 @@ const LoginForm = ({ onLogin }) => {
                 required
                 value={formData.password}
                 onChange={handleChange}
-                className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors bg-blue-50"
+                className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg  focus:ring-red-500 focus:border-red-500 transition-colors bg-red-50"
                 placeholder="••••••••"
               />
               <button
@@ -123,7 +125,7 @@ const LoginForm = ({ onLogin }) => {
                 type="checkbox"
                 checked={formData.rememberMe}
                 onChange={handleChange}
-                className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                className="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded"
               />
               <label htmlFor="rememberMe" className="ml-2 block text-sm text-gray-700">
                 Remember me
