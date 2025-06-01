@@ -11,7 +11,13 @@ import MobilityDocuments from './pages/mobility/MobilityDocuments';
 import MobilityStats from './pages/mobility/MobilityStats';
 import OcrReview from './pages/mobility/OcrReview'; // adapte le chemin si besoin
 import CoordinatorDashboard from './pages/coordinator/CoordinatorDashboard';
+import Validate from './pages/coordinator/Validate';
+import ValidationHistory from './pages/coordinator/ValidationHistory';
 import StudentDashboard from './pages/student/StudentDashboard';
+import StudentMobilitie from './pages/student/StudentMobilitie';
+import StudentGrades from './pages/student/StudentGrades';
+import StudentDocuments from './pages/student/StudentDocuments';
+import StudentStatus from './pages/student/StudentStatus';
 import PartnerDashboard from './pages/partner/PartnerDashboard';
 import ProfilePage from './pages/profile/ProfilePage';
 import Partners from './pages/admin/Partners';
@@ -85,11 +91,74 @@ export default function AppRoutes({ user }) {
         />
 
         <Route
+          path="/coordinator/validate"
+          element={
+            <ProtectedRoute user={user}>
+              <AuthGuard user={user} allowedRoles={[USER_ROLES.COORDINATOR]}>
+                <Validate user={user} />
+              </AuthGuard>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/coordinator/validation-history"
+          element={
+            <ProtectedRoute user={user}>
+              <AuthGuard user={user} allowedRoles={[USER_ROLES.COORDINATOR]}>
+                <ValidationHistory user={user} />
+              </AuthGuard>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
           path="/student-dashboard"
           element={
             <ProtectedRoute user={user}>
               <AuthGuard user={user} allowedRoles={[USER_ROLES.STUDENT]}>
                 <StudentDashboard user={user} />
+              </AuthGuard>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/student/mobilitie"
+          element={
+            <ProtectedRoute user={user}>
+              <AuthGuard user={user} allowedRoles={[USER_ROLES.STUDENT]}>
+                <StudentMobilitie user={user} />
+              </AuthGuard>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/student/grades"
+          element={
+            <ProtectedRoute user={user}>
+              <AuthGuard user={user} allowedRoles={[USER_ROLES.STUDENT]}>
+                <StudentGrades user={user} />
+              </AuthGuard>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/student/documents"
+          element={
+            <ProtectedRoute user={user}>
+              <AuthGuard user={user} allowedRoles={[USER_ROLES.STUDENT]}>
+                <StudentDocuments user={user} />
+              </AuthGuard>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/student/status"
+          element={
+            <ProtectedRoute user={user}>
+              <AuthGuard user={user} allowedRoles={[USER_ROLES.STUDENT]}>
+                <StudentStatus user={user} />
               </AuthGuard>
             </ProtectedRoute>
           }

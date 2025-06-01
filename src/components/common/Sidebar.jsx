@@ -19,17 +19,21 @@ const Sidebar = ({ role }) => {
       { to: '/mobility-list', label: 'Liste Mobilités' },
       { to: '/mobility-create', label: 'Créer Mobilité' },
       { to: '/mobility-stats', label: 'Statistiques' },       // Nouveau lien vers stats
-      { to: '/mobility/:mobilityId/documents/ocr-review', label: 'Validation OCR', hideInSidebar: true },
+        { to: '/mobility/:mobilityId/documents/ocr-review', label: 'Validation OCR', hideInSidebar: true },
 
     ],
     [USER_ROLES.COORDINATOR]: [
       { to: '/coordinator-dashboard', label: 'Dashboard Coordinateur' },
-      { to: '/validation', label: 'Validation Mobilités' },
+      { to: '/coordinator/validate', label: 'Validation Mobilités' },
+      { to: '/coordinator/validation-history', label: 'Historique Validation' },
+
     ],
     [USER_ROLES.STUDENT]: [
       { to: '/student-dashboard', label: 'Dashboard Étudiant' },
-      { to: '/student-mobilities', label: 'Mes Mobilités' },
-    ],
+      { to: '/student/mobilitie', label: 'Ma Mobilité' },
+      { to: '/student/grades', label: 'Mes Notes' },
+      { to: '/student/documents', label: 'Mes Documents' },
+      { to: '/student/status', label: 'Statut du dossier' },    ],
     [USER_ROLES.PARTNER]: [
       { to: '/partner-dashboard', label: 'Dashboard Partenaire' },
       { to: '/partner-upload', label: 'Upload Documents' },

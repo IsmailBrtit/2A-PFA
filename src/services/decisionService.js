@@ -1,4 +1,5 @@
-// src/services/decisionService.js
+import mockMobilities from './studentService';
+
 
 let decisionsMock = [
   {
