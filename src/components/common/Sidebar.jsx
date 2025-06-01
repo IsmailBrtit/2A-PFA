@@ -36,7 +36,9 @@ const Sidebar = ({ role }) => {
       { to: '/student/status', label: 'Statut du dossier' },    ],
     [USER_ROLES.PARTNER]: [
       { to: '/partner-dashboard', label: 'Dashboard Partenaire' },
-      { to: '/partner-upload', label: 'Upload Documents' },
+      { to: '/partner/students', label: 'Mes Étudiants' },
+       { to: '/partner/upload', label: 'Uploader Document' },
+      { to: '/partner/validation-status', label: 'Statut Validation' },
     ],
   };
 

@@ -57,3 +57,12 @@ export const deleteDocument = async (id) => {
   documentsMock = documentsMock.filter((d) => d.id !== id);
   return true;
 };
+
+
+export const documentService = {
+  fetchDocuments,
+  fetchDocumentById,
+  createDocument,
+  updateDocument,
+  deleteDocument,
+};

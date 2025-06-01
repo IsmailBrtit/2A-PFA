@@ -19,6 +19,9 @@ import StudentGrades from './pages/student/StudentGrades';
 import StudentDocuments from './pages/student/StudentDocuments';
 import StudentStatus from './pages/student/StudentStatus';
 import PartnerDashboard from './pages/partner/PartnerDashboard';
+import PartnerStudents from './pages/partner/PartnerStudents';
+import PartnerUpload from './pages/partner/PartnerUpload';
+import PartnerValidationStatus from './pages/partner/PartnerValidationStatus';
 import ProfilePage from './pages/profile/ProfilePage';
 import Partners from './pages/admin/Partners';
 import Users from './pages/admin/Users';
@@ -170,6 +173,37 @@ export default function AppRoutes({ user }) {
             <ProtectedRoute user={user}>
               <AuthGuard user={user} allowedRoles={[USER_ROLES.PARTNER]}>
                 <PartnerDashboard user={user} />
+              </AuthGuard>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/partner/students"
+          element={
+            <ProtectedRoute user={user}>
+              <AuthGuard user={user} allowedRoles={[USER_ROLES.PARTNER]}>
+                <PartnerStudents user={user} />
+              </AuthGuard>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/partner/upload"
+          element={
+            <ProtectedRoute user={user}>
+              <AuthGuard user={user} allowedRoles={[USER_ROLES.PARTNER]}>
+                <PartnerUpload user={user} />
+              </AuthGuard>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/partner/validation-status"
+          element={
+            <ProtectedRoute user={user}>
+              <AuthGuard user={user} allowedRoles={[USER_ROLES.PARTNER]}>
+                <PartnerValidationStatus user={user} />
               </AuthGuard>
             </ProtectedRoute>
           }

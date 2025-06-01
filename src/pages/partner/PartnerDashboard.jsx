@@ -11,6 +11,9 @@ const PartnerDashboard = ({ user }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadSuccess, setUploadSuccess] = useState(false);
 
+  const limitedStudents = students.slice(0, 3);
+
+
   useEffect(() => {
     partnerService.getPartnerStudents()
       .then(data => {
@@ -79,7 +82,7 @@ const PartnerDashboard = ({ user }) => {
               </tr>
             </thead>
             <tbody>
-              {students.map(student => (
+              {limitedStudents.map(student => (
                 <tr key={student.id} className="border-b hover:bg-gray-50 align-top">
                   <td className="py-2 px-4">{student.fullName}</td>
                   <td className="py-2 px-4">{student.email}</td>
@@ -99,7 +102,7 @@ const PartnerDashboard = ({ user }) => {
           </table>
         </section>
 
-        <section className="mb-12">
+        {/*<section className="mb-12">
           <h2 className="text-xl font-semibold mb-4">Uploader un document</h2>
 
           <div className="mb-4">
@@ -139,7 +142,7 @@ const PartnerDashboard = ({ user }) => {
           {uploadSuccess && (
             <p className="mt-4 text-green-600 font-semibold">Document uploadé avec succès !</p>
           )}
-        </section>
+        </section> */}
       </div>
     </Layout>
   );
