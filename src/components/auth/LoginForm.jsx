@@ -21,12 +21,15 @@ const LoginForm = ({ onLogin }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    
-    // Simulation d'appel API
-    setTimeout(() => {
-      onLogin(formData);
-      setIsLoading(false);
-    }, 1000);
+
+    try {
+      await onLogin(formData); // Call real login function passed from parent
+    } catch (error) {
+      console.error("Login failed", error);
+      alert("Email ou mot de passe incorrect");
+    }
+
+    setIsLoading(false);
   };
 
   return (

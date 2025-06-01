@@ -18,6 +18,11 @@ export const ROLE_LABELS = {
   [USER_ROLES.SYSTEM_ADMIN]: 'Super Administrateur'
 };
 
+export const ADMIN_ROLES = [
+  USER_ROLES.SYSTEM_ADMIN,
+  USER_ROLES.SCHOOL_ADMIN,
+];
+
 // 🎯 Routes principales par rôle
 export const ROUTES = {
   // Auth

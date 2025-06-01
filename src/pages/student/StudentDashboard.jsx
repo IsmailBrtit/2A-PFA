@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Layout from '../../components/common/Layout';
 import studentService from '../../services/studentService';
-import { capitalize } from '../utils/helpers';
-import { formatDate } from '../utils/formatters';
-import { isValidEmail } from '../utils/validators';
 
 const StudentDashboard = ({ user }) => {
   const [studentInfo, setStudentInfo] = useState(null);
@@ -37,7 +34,7 @@ const StudentDashboard = ({ user }) => {
 
         <section className="mb-8 bg-white shadow-lg rounded-lg p-6">
             <h2 className="text-2xl font-semibold mb-5 border-b pb-2">Informations personnelles</h2>
-            <p className="mb-2"><strong>Email :</strong> {studentInfo.email}{ !isValidEmail(student.email) && <span style={{color:'red'}}>Email invalide</span>}</p>
+            <p className="mb-2"><strong>Email :</strong> {studentInfo.email}</p>
             <p className="mb-2"><strong>Filière :</strong> {studentInfo.filiere}</p>
             <p><strong>Partenaire :</strong> {studentInfo.partner ? `${studentInfo.partner.universityName} (${studentInfo.partner.country})` : '-'}</p>
         </section>
