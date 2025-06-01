@@ -1,13 +1,13 @@
 const mockStudentInfo = {
   id: 101,
-  fullName: "Alice Dupont",
-  email: "alice.dupont@example.com",
+  fullName: "Hamza Elmadani",
+  email: "hamza@ensias.com",
   filiere: "GL",
   partner: {
     id: 201,
-    universityName: "Université de Paris",
+    universityName: "ENSEEIHT",
     country: "France",
-    gradingScale: "0-20"
+    gradingScale: "France"
   }
 };
 
@@ -50,38 +50,78 @@ const mockMobilities = [
         semesters: [
           {
             id: 401,
-            label: "S1",
+            label: "S5",
             type: "NORMAL",
             modules: [
               {
                 id: 501,
-                name: "Mathématiques",
-                originalGrade: 14.5,
-                convertedGrade: 13.5,
+                name: "AI",
+                originalGrade: 18,
+                convertedGrade: 20,
                 ects: 6,
                 isPfe: false
               },
               {
                 id: 502,
-                name: "Physique",
-                originalGrade: 12,
-                convertedGrade: 11,
+                name: "Databases",
+                originalGrade: 17,
+                convertedGrade: 20,
                 ects: 4,
+                isPfe: false
+              },
+              {
+                id: 503,
+                name: "Operating Systems",
+                originalGrade: 16,
+                convertedGrade: 19.2,
+                ects: 6,
+                isPfe: false
+              },
+              {
+                id: 504,
+                name: " Architecture des Systèmes d'exploitation",
+                originalGrade: 15,
+                convertedGrade: 18,
+                ects: 6,
+                isPfe: false
+              },
+              {
+                id: 505,
+                name: "Systèmes de télécom sans fils et mobiles",
+                originalGrade: 14.5,
+                convertedGrade: 17.4,
+                ects: 6,
+                isPfe: false
+              },
+              {
+                id: 506,
+                name: "Science des Réseaux et Apprentissage",
+                originalGrade: 12,
+                convertedGrade: 14.4,
+                ects: 6,
+                isPfe: false
+              },
+              {
+                id: 506,
+                name: " Soft and Human Skills",
+                originalGrade: 15,
+                convertedGrade: 18,
+                ects: 6,
                 isPfe: false
               }
             ]
           },
           {
             id: 402,
-            label: "S2",
-            type: "NORMAL",
+            label: "S6",
+            type: "PFE",
             modules: [
               {
                 id: 503,
-                name: "Informatique",
-                originalGrade: 15,
-                convertedGrade: 14,
-                ects: 6,
+                name: "PFE",
+                originalGrade: 16,
+                convertedGrade: 19.2,
+                ects: null,
                 isPfe: false
               }
             ]

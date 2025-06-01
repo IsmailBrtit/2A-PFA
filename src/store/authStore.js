@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { authService } from '../services/authService'; // ✅ Adjust path if needed
-import jwtDecode from 'jwt-decode';
+import {jwtDecode} from 'jwt-decode';
 
 export const useAuthStore = create(
   persist(
