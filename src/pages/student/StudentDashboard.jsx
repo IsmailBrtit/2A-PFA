@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Layout from '../../components/common/Layout';
 import studentService from '../../services/studentService';
+<<<<<<< HEAD
+=======
 //import { capitalize } from '../utils/helpers';
 //import { formatDate } from '../utils/formatters';
 //import { isValidEmail } from '../utils/validators';
+>>>>>>> a1bc3bb76609fe571abdf782e6252a080b963188
 
 const StudentDashboard = ({ user }) => {
   const [studentInfo, setStudentInfo] = useState(null);
@@ -37,6 +40,13 @@ const StudentDashboard = ({ user }) => {
           Bienvenue {studentInfo.fullName}
         </h1>
 
+<<<<<<< HEAD
+        <section className="mb-8 bg-white shadow-lg rounded-lg p-6">
+            <h2 className="text-2xl font-semibold mb-5 border-b pb-2">Informations personnelles</h2>
+            <p className="mb-2"><strong>Email :</strong> {studentInfo.email}</p>
+            <p className="mb-2"><strong>Filière :</strong> {studentInfo.filiere}</p>
+            <p><strong>Partenaire :</strong> {studentInfo.partner ? `${studentInfo.partner.universityName} (${studentInfo.partner.country})` : '-'}</p>
+=======
         <section className="mb-10 bg-white shadow-2xl rounded-2xl p-8 border border-indigo-100">
           <h2 className="text-2xl font-semibold mb-5 border-b pb-2 text-indigo-700 flex items-center gap-2">
             {/* <FaUserCircle className="text-indigo-400" /> */}
@@ -45,6 +55,7 @@ const StudentDashboard = ({ user }) => {
           <p className="mb-2"><strong>Email :</strong> <span className="text-gray-700">{studentInfo.email}</span></p>
           <p className="mb-2"><strong>Filière :</strong> <span className="text-gray-700">{studentInfo.filiere}</span></p>
           <p><strong>Partenaire :</strong> <span className="text-gray-700">{studentInfo.partner ? `${studentInfo.partner.universityName} (${studentInfo.partner.country})` : '-'}</span></p>
+>>>>>>> a1bc3bb76609fe571abdf782e6252a080b963188
         </section>
 
         <section>

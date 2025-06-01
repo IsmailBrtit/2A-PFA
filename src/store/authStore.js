@@ -1,5 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import { authService } from '../services/authService'; // ✅ Adjust path if needed
+import {jwtDecode} from 'jwt-decode';
 
 export const useAuthStore = create(
   persist(
@@ -12,25 +14,31 @@ export const useAuthStore = create(
 
       login: async (credentials) => {
         set({ isLoading: true, error: null });
-        
+
         try {
-          // Simulation d'une API call - remplacez par votre vraie API
-          const mockUser = await mockLogin(credentials);
-          
+          const data = await authService.login(credentials);
+          const decoded = jwtDecode(data.token); // JWT payload
+
+          const user = {
+            id: decoded.id,
+            email: decoded.sub,
+            role: decoded.role,
+            fullName: decoded.fullName, // Adjust if your token includes it
+          };
+
           set({
-            user: mockUser,
-            token: 'mock-jwt-token',
+            user,
+            token: data.token,
             isAuthenticated: true,
             isLoading: false,
-            error: null
           });
-          
-          return mockUser;
+
+          return user;
         } catch (error) {
           set({
-            error: error.message,
+            error: error.response?.data?.message || 'Erreur de connexion',
             isLoading: false,
-            isAuthenticated: false
+            isAuthenticated: false,
           });
           throw error;
         }
@@ -43,6 +51,7 @@ export const useAuthStore = create(
           isAuthenticated: false,
           error: null
         });
+        localStorage.removeItem('ensias-auth-storage'); // Optional cleanup
       },
 
       updateUser: (userData) => {
@@ -63,60 +72,3 @@ export const useAuthStore = create(
     }
   )
 );
-
-// Mock login function - remplacez par votre vraie logique
-const mockLogin = async (credentials) => {
-  await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate API delay
-  
-  // Mock users database
-  const mockUsers = {
-    'admin@ensias.ma': {
-      id: 1,
-      email: 'admin@ensias.ma',
-      name: 'Administrateur',
-      role: 'SYSTEM_ADMIN'
-    },
-    'school@ensias.ma': {
-      id: 2,
-      email: 'school@ensias.ma',
-      name: 'Admin École',
-      role: 'SCHOOL_ADMIN'
-    },
-    'mobility@ensias.ma': {
-      id: 3,
-      email: 'mobility@ensias.ma',
-      name: 'Agent Mobilité',
-      role: 'MOBILITY_OFFICER'
-    },
-    'coord@ensias.ma': {
-      id: 4,
-      email: 'coord@ensias.ma',
-      name: 'Coordinateur',
-      role: 'COORDINATOR'
-    },
-    'student@ensias.ma': {
-      id: 5,
-      email: 'student@ensias.ma',
-      name: 'Étudiant Test',
-      role: 'STUDENT',
-      filiere: 'Génie Informatique'
-    },
-    'partner@university.com': {
-      id: 6,
-      email: 'partner@university.com',
-      name: 'Partenaire Test',
-      role: 'PARTNER',
-      universityName: 'University of Test',
-      country: 'France',
-      gradingScale: 'A-F'
-    }
-  };
-
-  const user = mockUsers[credentials.email];
-  
-  if (!user || credentials.password !== 'password') {
-    throw new Error('Email ou mot de passe incorrect');
-  }
-  
-  return user;
-};

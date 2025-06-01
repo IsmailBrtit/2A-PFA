@@ -1,56 +1,50 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import LoginForm from '../../components/auth/LoginForm';
-import { USER_ROLES, ROUTES } from '../../utils/constants';
+import { USER_ROLES, ROUTES, ADMIN_ROLES } from '../../utils/constants';
+import { authService } from '../../services/authService';
+import { jwtDecode } from 'jwt-decode';
 
 const Login = () => {
   const navigate = useNavigate();
 
-  const handleLogin = (credentials) => {
-    // Mock authentification - remplacez par votre logique réelle
-    const mockUsers = {
-  'admin@ensias.ma': { id: 1, role: USER_ROLES.SYSTEM_ADMIN, fullName: 'System Admin' },
-  'school@ensias.ma': { id: 2, role: USER_ROLES.SCHOOL_ADMIN, fullName: 'School Admin' },
-  'mobility@ensias.ma': { id: 3, role: USER_ROLES.MOBILITY_OFFICER, fullName: 'Mobility Officer' },
-  'coord@ensias.ma': { id: 4, role: USER_ROLES.COORDINATOR, fullName: 'Coordinator' },
-  'student@ensias.ma': { id: 5, role: USER_ROLES.STUDENT, fullName: 'Student Example' },
-  'partner@university.com': { id: 6, role: USER_ROLES.PARTNER, fullName: 'Partner Example' }
-};
+  const handleLogin = async (credentials) => {
+    try {
+      const token = await authService.login(credentials);
+      const decoded = jwtDecode(token);
 
+      console.log("🔐 Token decoded:", decoded); // <== debug
 
-    const user = mockUsers[credentials.email];
-    
-    if (user && credentials.password === 'password') {
-      // Stocker les infos utilisateur (remplacez par votre système de gestion d'état)
-      localStorage.setItem('user', JSON.stringify({
-        id: user.id,
-        email: credentials.email,
-        role: user.role,
-        fullName: user.fullName,
-      }));
+      const role =
+        (decoded.role ||
+          decoded.roles?.[0] ||
+          decoded.authorities?.[0] ||
+          '').replace('ROLE_', '');
 
-      // Rediriger selon le rôle
-      switch (user.role) {
-        case USER_ROLES.SYSTEM_ADMIN:
-        case USER_ROLES.SCHOOL_ADMIN:
-          navigate(ROUTES.ADMIN_DASHBOARD);
-          break;
-        case USER_ROLES.MOBILITY_OFFICER:
-          navigate(ROUTES.MOBILITY_DASHBOARD);
-          break;
-        case USER_ROLES.COORDINATOR:
-          navigate(ROUTES.COORDINATOR_DASHBOARD);
-          break;
-        case USER_ROLES.STUDENT:
-          navigate(ROUTES.STUDENT_DASHBOARD);
-          break;
-        case USER_ROLES.PARTNER:
-          navigate(ROUTES.PARTNER_DASHBOARD);
-          break;
-        default:
-          console.error('Rôle utilisateur non reconnu');
+      const user = {
+        email: decoded.sub,
+        role: role,
+        fullName: decoded.fullName || 'Utilisateur',
+      };
+
+      localStorage.setItem('user', JSON.stringify(user));
+      localStorage.setItem('token', token);
+
+      if (ADMIN_ROLES.includes(user.role)) {
+        navigate(ROUTES.ADMIN_DASHBOARD);
+      } else if (user.role === USER_ROLES.MOBILITY_OFFICER) {
+        navigate(ROUTES.MOBILITY_DASHBOARD);
+      } else if (user.role === USER_ROLES.COORDINATOR) {
+        navigate(ROUTES.COORDINATOR_DASHBOARD);
+      } else if (user.role === USER_ROLES.STUDENT) {
+        navigate(ROUTES.STUDENT_DASHBOARD);
+      } else if (user.role === USER_ROLES.PARTNER) {
+        navigate(ROUTES.PARTNER_DASHBOARD);
+      } else {
+        alert("Rôle utilisateur non reconnu.");
       }
-    } else {
+    } catch (err) {
+      console.error(err);
       alert('Email ou mot de passe incorrect');
     }
   };
