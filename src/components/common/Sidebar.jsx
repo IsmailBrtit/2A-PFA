@@ -45,10 +45,10 @@ const Sidebar = ({ role }) => {
   const links = linksByRole[role] || [];
 
   return (
-    <nav className="w-64 bg-white shadow-lg flex flex-col min-h-screen">
+    <nav className="w-64 bg-gradientb shadow-lg flex flex-col min-h-screen">
       {/* Logo / Title */}
-      <div className="h-16 flex items-center justify-center font-extrabold text-blue-600 text-lg border-b border-gray-200">
-        ENSIAS Mobility
+      <div className="h-16 flex items-center justify-center font-extrabold text-white-600 text-lg border-b border-gray-200">
+        ENSIAS Mobilité
       </div>
 
       {/* Navigation Links */}
@@ -59,8 +59,8 @@ const Sidebar = ({ role }) => {
               <li
                 className={`cursor-pointer px-6 py-3 mb-2 mx-4 rounded-lg transition-colors
                   ${isActive
-                    ? 'bg-blue-600 text-white font-semibold shadow-md'
-                    : 'text-gray-700 hover:bg-blue-100 hover:text-blue-700'
+                    ? 'bg-red-600 text-white font-semibold shadow-md'
+                    : 'text-gray-700 hover:bg-red-100 hover:text-red-700'
                   }`}
               >
                 {label}
